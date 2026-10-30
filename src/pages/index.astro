@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ZohoLeadForm from '../components/ZohoLeadForm.astro';
+---
+
+<Layout>
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-brand-dark/80 border-b border-brand-border">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <span class="text-2xl font-black tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+          Automentra
+        </span>
+        <span class="hidden sm:inline-block text-xs font-medium text-slate-400 border-l border-brand-border pl-2">
+          IFS Cloud BPA Advisory
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
+        <a href="#comparison" class="hover:text-purple-400 transition-colors">Why Native BPA</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:opacity-90 transition-opacity">
+          Book Review
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="relative pt-24 pb-20 overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent pointer-events-none"></div>
+    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-surface border border-brand-border text-xs font-medium text-purple-300 mb-8">
+        <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+        Enterprise IFS Cloud BPA & Camunda BPMN 2.0 Engineering
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+        Modernize Your IFS Cloud Workflows. <br />
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-300 to-purple-500">
+          Eliminate Technical Debt.
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+        Automentra bridges the gap between legacy IFS customizations and native cloud architecture. We refactor brittle PL/SQL event actions into auditable BPMN 2.0 workflows, automate multi-tier approval hierarchies, and integrate external REST APIs without third-party middleware.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="px-8 py-3.5 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg shadow-purple-900/40 hover:opacity-95 transition-opacity">
+          Schedule BPA Architecture Review
+        </a>
+        <a href="#services" class="px-8 py-3.5 rounded-lg bg-brand-surface border border-brand-border text-slate-200 font-semibold hover:bg-slate-800 transition-colors">
+          Explore Services
+        </a>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-brand-border/60 grid grid-cols-2 md:grid-cols-4 gap-6 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+        <div>IFS Cloud 21R1 – 24R2+</div>
+        <div>Camunda BPMN 2.0 Engine</div>
+        <div>Native Projection APIs</div>
+        <div>Serving India, US & Canada</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparison" class="py-20 bg-brand-surface/40 border-y border-brand-border">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">The Real Cost of Legacy IFS Customizations</h2>
+        <p class="text-slate-400 text-sm">Carrying Apps 9/10 development patterns into IFS Cloud creates ongoing technical debt and breaks during Service Updates.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-8 rounded-xl bg-brand-dark border border-red-900/30">
+          <h3 class="text-lg font-bold text-red-400 mb-6 flex items-center gap-2">
+            <span>✕</span> The Legacy Approach
+          </h3>
+          <ul class="space-y-4 text-sm text-slate-300">
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span><strong>Brittle PL/SQL Triggers:</strong> Unmonitored database events break without warning during Release Updates (RUs).</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span><strong>Rigid Approval Limits:</strong> Standard IFS authorization matrices cannot handle cross-departmental or multi-tier rules.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-red-400 mt-1">•</span>
+              <span><strong>Expensive Middleware:</strong> Over-paying for third-party iPaaS to perform basic API payload transformations.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-8 rounded-xl bg-brand-dark border border-purple-900/50 relative overflow-hidden">
+          <h3 class="text-lg font-bold text-purple-400 mb-6 flex items-center gap-2">
+            <span>✓</span> The Automentra BPA Standard
+          </h3>
+          <ul class="space-y-4 text-sm text-slate-300">
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 mt-1">•</span>
+              <span><strong>BPMN 2.0 Visual Governance:</strong> Fully auditable workflows interacting directly via native OData Projections.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 mt-1">•</span>
+              <span><strong>Dynamic Routing & Rollbacks:</strong> Fine-grained JUEL expressions, error boundary events, and blocking UI dialogs.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-purple-400 mt-1">•</span>
+              <span><strong>Direct REST Orchestration:</strong> Call external endpoints directly from BPA service tasks with zero external middleware cost.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-white mb-4">Specialized IFS Cloud BPA Services</h2>
+        <p class="text-slate-400">Targeted technical offerings built exclusively for the modern IFS automation layer.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-purple transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold mb-4">01</div>
+          <h3 class="text-lg font-bold text-white mb-2">Legacy-to-BPA Migration</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Audit and refactor custom PL/SQL database events, custom menus, and background jobs into clean, low-code BPMN 2.0 workflows.
+          </p>
+          <a href="#contact" class="text-xs font-semibold text-purple-400 hover:text-purple-300">Discuss Migration →</a>
+        </div>
+
+        <div class="p-6 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-purple transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-purple-600/20 text-purple-400 flex items-center justify-center font-bold mb-4">02</div>
+          <h3 class="text-lg font-bold text-white mb-2">Custom Workflow Dev</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Interactive Aurena/Marble UI dialogs, blocking validation rules, automated work task generation in EAM, and dynamic approval matrices.
+          </p>
+          <a href="#contact" class="text-xs font-semibold text-purple-400 hover:text-purple-300">Explore Development →</a>
+        </div>
+
+        <div class="p-6 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-purple transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold mb-4">03</div>
+          <h3 class="text-lg font-bold text-white mb-2">REST API Orchestration</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Connect external tax systems, shipping labels, address lookup services, and IoT platforms directly to IFS projections via BPA.
+          </p>
+          <a href="#contact" class="text-xs font-semibold text-purple-400 hover:text-purple-300">View Integrations →</a>
+        </div>
+
+        <div class="p-6 rounded-xl bg-brand-surface border border-brand-border hover:border-brand-purple transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-purple-600/20 text-purple-400 flex items-center justify-center font-bold mb-4">04</div>
+          <h3 class="text-lg font-bold text-white mb-2">BPA Health Check & Audit</h3>
+          <p class="text-slate-400 text-sm leading-relaxed mb-4">
+            Diagnose stuck asynchronous tasks, optimize Camunda execution logs, eliminate nested loops, and prepare workflows for Release Updates.
+          </p>
+          <a href="#contact" class="text-xs font-semibold text-purple-400 hover:text-purple-300">Book Health Check →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-brand-surface/30 border-t border-brand-border">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="p-8 md:p-12 rounded-2xl bg-brand-surface border border-brand-border shadow-2xl relative">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Initiate Your BPA Assessment</h2>
+          <p class="text-slate-400 text-sm">
+            Connect directly with an IFS Cloud BPA specialist. Share your process requirements or current technical roadblocks for a response within 24 business hours.
+          </p>
+        </div>
+        <ZohoLeadForm />
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 border-t border-brand-border bg-brand-dark text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        © 2026 Automentra (automenta.com). All rights reserved. Specialized IFS Cloud BPA Consulting.
+      </div>
+      <div class="flex gap-6">
+        <span>Delivery Zones: India • USA • Canada</span>
+      </div>
+    </div>
+  </footer>
+</Layout>

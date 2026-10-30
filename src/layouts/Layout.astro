@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Automentra | IFS Cloud BPA & Workflow Consulting",
+  description = "Automentra delivers enterprise-grade IFS Cloud BPA (Business Process Automation), BPMN 2.0 workflow development, and PL/SQL migration services."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-brand-dark text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.automenta.com" />
+    
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Automentra",
+        "url": "https://www.automenta.com",
+        "description": "Enterprise IFS Cloud Business Process Automation (BPA) and BPMN 2.0 Workflow Consulting.",
+        "areaServed": ["IN", "US", "CA"],
+        "serviceType": [
+          "IFS Cloud BPA Migration",
+          "BPMN 2.0 Workflow Development",
+          "IFS API Orchestration",
+          "Camunda Engine Health Check"
+        ]
+      }
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col font-sans selection:bg-brand-purple selection:text-white">
+    <slot />
+  </body>
+</html>
