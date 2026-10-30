@@ -4,25 +4,38 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map((entry) => ({
-    params: { slug: entry.slug ?? entry.id },
-    props: { entry },
-  }));
+  return posts.map((post) => {
+    // Sanitize the file path/id to remove .md or .mdx extension for clean URLs
+    const slug = post.id.replace(/\.(md|mdx)$/, '');
+    return {
+      params: { slug },
+      props: { post },
+    };
+  });
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { post } = Astro.props;
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+const { Content } = await render(post);
+const title = post.data?.title ?? 'Technical Blog';
+const description = post.data?.description ?? '';
+const date = post.data?.date ? new Date(post.data.date) : new Date();
+const author = post.data?.author ?? 'Automentra Team';
 ---
 
-<Layout title={`${entry.data.title} | Automentra`} description={entry.data.description}>
+<Layout title={`${title} | Automentra`} description={description}>
   <article class="max-w-4xl mx-auto px-6 py-20">
     <div class="mb-10 pb-8 border-b border-brand-border">
       <a href="/blog" class="text-xs text-purple-400 hover:text-purple-300 font-semibold mb-4 inline-block">← Back to Articles</a>
       <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 leading-tight">
-        {entry.data.title}
+        {title}
       </h1>
       <div class="text-xs text-slate-400">
-        Published on {entry.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • By {entry.data.author}
+        Published on {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} • By {author}
       </div>
     </div>
 
