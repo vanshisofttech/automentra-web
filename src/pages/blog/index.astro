@@ -20,6 +20,8 @@ const posts = (await getCollection('blog')).sort((a, b) => {
     <div class="space-y-6">
       {posts.map((post) => {
         const cleanSlug = post.id
+          .split('/')
+          .pop()!
           .replace(/\.(md|mdx)$/, '')
           .replace(/^\d{4}-\d{2}-\d{2}-/, '');
         const date = post.data?.date ? new Date(post.data.date) : new Date();
