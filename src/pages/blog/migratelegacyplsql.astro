@@ -5,17 +5,19 @@ import { getCollection, render } from 'astro:content';
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   return posts.map((post) => {
-    // Sanitize the file path/id to remove .md or .mdx extension for clean URLs
-    const slug = post.id.replace(/\.(md|mdx)$/, '');
+    // Strip file extension (.md, .mdx) and any leading date prefix (YYYY-MM-DD-)
+    const cleanSlug = post.id
+      .replace(/\.(md|mdx)$/, '')
+      .replace(/^\d{4}-\d{2}-\d{2}-/, '');
+
     return {
-      params: { slug },
+      params: { slug: cleanSlug },
       props: { post },
     };
   });
 }
 
 const { post } = Astro.props;
-
 if (!post) {
   return Astro.redirect('/404');
 }
