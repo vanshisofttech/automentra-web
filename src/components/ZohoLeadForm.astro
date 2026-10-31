@@ -3,23 +3,19 @@
 ---
 
 <form
-  name="bpa-consultation"
+  id="consultation-form"
+  action="https://api.web3forms.com/submit"
   method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  action="/?submitted=true"
   class="space-y-4 max-w-lg mx-auto bg-slate-900/60 p-8 rounded-2xl border border-slate-800"
 >
-  <!-- Hidden input required by Netlify Forms -->
-  <input type="hidden" name="form-name" value="bpa-consultation" />
+  <!-- Replace with your Web3Forms access key -->
+  <input type="hidden" name="access_key" value="a0ac6645-0ce0-430f-af66-f4cf82e0c022" />
 
-  <!-- Bot spam protection honeypot -->
-  <p class="hidden">
-    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-  </p>
-
-  <!-- Dynamic subject field sent to Netlify notifications -->
+  <!-- Form control options -->
+  <input type="hidden" name="from_name" value="Automentra Leads" />
   <input type="hidden" id="email-subject" name="subject" value="New Enquiry from Website Lead" />
+  <input type="hidden" name="redirect" value="https://automentra.netlify.app/?submitted=true" />
+  <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div>
@@ -29,7 +25,7 @@
       <input
         type="text"
         id="first_name"
-        name="First_Name"
+        name="First Name"
         required
         placeholder="Jane"
         class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
@@ -43,7 +39,7 @@
       <input
         type="text"
         id="last_name"
-        name="Last_Name"
+        name="Last Name"
         required
         placeholder="Doe"
         class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
@@ -85,7 +81,7 @@
     </label>
     <textarea
       id="message"
-      name="Project_Details"
+      name="Project Details"
       rows="4"
       placeholder="Tell us about your IFS Cloud BPA or automation project..."
       class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
@@ -101,8 +97,7 @@
 </form>
 
 <script>
-  // Update the hidden subject before submit to reflect: New Enquiry from [First Name] [Last Name]
-  const form = document.querySelector('form[name="bpa-consultation"]') as HTMLFormElement;
+  const form = document.getElementById('consultation-form') as HTMLFormElement;
   const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
   const lastNameInput = document.getElementById('last_name') as HTMLInputElement;
   const subjectInput = document.getElementById('email-subject') as HTMLInputElement;
