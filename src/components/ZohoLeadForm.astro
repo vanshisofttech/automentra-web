@@ -1,67 +1,117 @@
 ---
+// src/components/ZohoLeadForm.astro
 ---
-<form 
-  action="https://crm.zoho.com/crm/WebToLeadForm" 
-  name="AutomentraLeadForm" 
-  method="POST" 
-  accept-charset="UTF-8"
-  class="space-y-4"
+
+<form
+  name="bpa-consultation"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action="/?submitted=true"
+  class="space-y-4 max-w-lg mx-auto bg-slate-900/60 p-8 rounded-2xl border border-slate-800"
 >
-  <input type="hidden" name="xnQsjsdp" value="YOUR_XNQSJSDP_TOKEN" />
-  <input type="hidden" name="xmIwtLDp" value="YOUR_XMIWTLDP_TOKEN" />
-  <input type="hidden" name="actionType" value="TGVhZHM=" />
-  <input type="hidden" name="returnURL" value="https://www.automenta.com/thank-you" />
+  <!-- Hidden input required by Netlify Forms -->
+  <input type="hidden" name="form-name" value="bpa-consultation" />
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">First Name *</label>
-      <input type="text" name="First Name" required placeholder="John" class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-purple" />
-    </div>
-    <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Last Name *</label>
-      <input type="text" name="Last Name" required placeholder="Doe" class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-purple" />
-    </div>
-  </div>
+  <!-- Bot spam protection honeypot -->
+  <p class="hidden">
+    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+  </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Work Email *</label>
-      <input type="email" name="Email" required placeholder="johndoe@enterprise.com" class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-purple" />
-    </div>
-    <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Company / Organization *</label>
-      <input type="text" name="Company" required placeholder="Acme Global Inc." class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-purple" />
-    </div>
-  </div>
+  <!-- Dynamic subject field sent to Netlify notifications -->
+  <input type="hidden" id="email-subject" name="subject" value="New Enquiry from Website Lead" />
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Current IFS Platform</label>
-      <select name="IFS_Version" class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-slate-200 focus:outline-none focus:border-brand-purple">
-        <option value="IFS Apps 9/10">IFS Applications 9 / 10</option>
-        <option value="IFS Cloud 21R1-22R2">IFS Cloud 21R1 – 22R2</option>
-        <option value="IFS Cloud 23R1+">IFS Cloud 23R1+</option>
-        <option value="Evaluation / Migration Stage">Planning Upgrade to IFS Cloud</option>
-      </select>
+      <label for="first_name" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+        First Name *
+      </label>
+      <input
+        type="text"
+        id="first_name"
+        name="First_Name"
+        required
+        placeholder="Jane"
+        class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
+      />
     </div>
+
     <div>
-      <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Primary Objective</label>
-      <select name="Service_Interest" class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-slate-200 focus:outline-none focus:border-brand-purple">
-        <option value="PL/SQL Migration">Migrate Legacy PL/SQL Events to BPA</option>
-        <option value="Custom Workflow">New Custom BPMN Workflow Development</option>
-        <option value="API Orchestration">External REST API / Webhook Integration</option>
-        <option value="BPA Health Check">BPA Troubleshooting & Performance Audit</option>
-      </select>
+      <label for="last_name" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+        Last Name *
+      </label>
+      <input
+        type="text"
+        id="last_name"
+        name="Last_Name"
+        required
+        placeholder="Doe"
+        class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
+      />
     </div>
   </div>
 
   <div>
-    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Project Details / Current Bottlenecks</label>
-    <textarea name="Description" rows="4" placeholder="Briefly describe the processes you want to automate, stuck asynchronous jobs, or upgrade timelines..." class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus:border-brand-purple"></textarea>
+    <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+      Work Email *
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="Email"
+      required
+      placeholder="jane@company.com"
+      class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
+    />
   </div>
 
-  <button type="submit" class="w-full py-3.5 px-6 font-semibold rounded-lg bg-gradient-to-r from-brand-blue to-brand-purple hover:opacity-95 transition-opacity text-white shadow-lg shadow-purple-900/30">
+  <div>
+    <label for="company" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+      Company Name *
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="Company"
+      required
+      placeholder="Acme Enterprises"
+      class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
+    />
+  </div>
+
+  <div>
+    <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+      Project Details / Requirements
+    </label>
+    <textarea
+      id="message"
+      name="Project_Details"
+      rows="4"
+      placeholder="Tell us about your IFS Cloud BPA or automation project..."
+      class="w-full px-4 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-purple-500 text-sm"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full py-3 px-6 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:opacity-95 transition-opacity text-sm shadow-lg shadow-purple-900/30"
+  >
     Request BPA Architecture Consultation
   </button>
-  <p class="text-xs text-center text-slate-400">Strict NDA observed. Routed straight to Automentra lead pipeline.</p>
 </form>
+
+<script>
+  // Update the hidden subject before submit to reflect: New Enquiry from [First Name] [Last Name]
+  const form = document.querySelector('form[name="bpa-consultation"]') as HTMLFormElement;
+  const firstNameInput = document.getElementById('first_name') as HTMLInputElement;
+  const lastNameInput = document.getElementById('last_name') as HTMLInputElement;
+  const subjectInput = document.getElementById('email-subject') as HTMLInputElement;
+
+  if (form && firstNameInput && lastNameInput && subjectInput) {
+    form.addEventListener('submit', () => {
+      const first = firstNameInput.value.trim();
+      const last = lastNameInput.value.trim();
+      subjectInput.value = `New Enquiry from ${first} ${last}`.trim();
+    });
+  }
+</script>
